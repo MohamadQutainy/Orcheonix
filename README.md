@@ -11,6 +11,8 @@
 Orcheonix accepts a single strategic query and produces an executive-ready intelligence report covering competitors, market and financial signals, deep web research, strategy, risk, compliance, and implementation planning. A ReAct orchestrator coordinates four specialized agents, runs upstream work in parallel, synthesizes a unified report, and scores every agent output with deterministic metrics.
 
 Default model: `gpt-5.4-nano` (configurable via `MODEL_NAME`).
+## Demo
+![Orcheonix Demo](media/Orcheonix.mp4)
 
 ## ✨ Key Features
 
