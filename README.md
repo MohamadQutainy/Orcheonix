@@ -4,15 +4,13 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.57.0-red.svg)](https://streamlit.io/)
 [![OpenAI](https://img.shields.io/badge/OpenAI-2.44.0-green.svg)](https://openai.com/)
-[![Tests](https://github.com/your-username/orcheonix/actions/workflows/tests.yml/badge.svg)](https://github.com/your-username/orcheonix/actions/workflows/tests.yml)
+[![Tests](https://github.com/MohamadQutainy/Orcheonix/actions/workflows/tests.yml/badge.svg)](https://github.com/MohamadQutainy/Orcheonix/actions/workflows/tests.yml)
 
 **Multi-agent business intelligence platform powered by the OpenAI API.**
 
 Orcheonix accepts a single strategic query and produces an executive-ready intelligence report covering competitors, market and financial signals, deep web research, strategy, risk, compliance, and implementation planning. A ReAct orchestrator coordinates four specialized agents, runs upstream work in parallel, synthesizes a unified report, and scores every agent output with deterministic metrics.
 
 Default model: `gpt-5.4-nano` (configurable via `MODEL_NAME`).
-
-![Orcheonix dashboard](docs/screenshots/orcheonix-dashboard.svg)
 
 ## ✨ Key Features
 
@@ -69,7 +67,7 @@ Get Orcheonix up and running in under 5 minutes:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/orcheonix.git
+git clone https://github.com/MohamadQutainy/Orcheonix.git
 cd orcheonix
 
 # Install dependencies
@@ -103,22 +101,22 @@ graph TD
     classDef agent fill:#f0fdf4,stroke:#bbf7d0,stroke-width:1px,color:#166534;
     classDef eval fill:#fcf5ff,stroke:#e9d5ff,stroke-width:1px,color:#6b21a8;
 
-    U([👤 User Query]) ::: user
+    U([👤 User Query])
 
     subgraph Orchestration Engine
         direction TB
-        T{🧠 THINK} ::: orchestrator
-        O1[🔍 OBSERVE <br/> Parallel Execution] ::: orchestrator
-        O2[🔗 COMBINE <br/> Upstream Context] ::: orchestrator
-        S{📝 SYNTHESIZE} ::: orchestrator
+        T{🧠 THINK}
+        O1[🔍 OBSERVE <br/> Parallel Execution]
+        O2[🔗 COMBINE <br/> Upstream Context]
+        S{📝 SYNTHESIZE}
     end
 
     subgraph Specialized Agents
         direction TB
-        A1[📊 A1: Competitor Intelligence] ::: agent
-        A2[📈 A2: Market & Financial] ::: agent
-        A3[🌐 A3: Deep Web Research] ::: agent
-        A4[⚖️ A4: Strategy & Risk] ::: agent
+        A1[📊 A1: Competitor Intelligence]
+        A2[📈 A2: Market & Financial]
+        A3[🌐 A3: Deep Web Research]
+        A4[⚖️ A4: Strategy & Risk]
     end
 
     U --> T
@@ -135,8 +133,13 @@ graph TD
     O2 -->|Enriched Context| A4
     A4 -->|Risk Analysis| S
     
-    S -->|Final Report| UI([💻 Streamlit Dashboard]) ::: user
-    UI -.->|Post-run Metrics| E[[📊 Agent Evaluator]] ::: eval
+    S -->|Final Report| UI([💻 Streamlit Dashboard])
+    UI -.->|Post-run Metrics| E[[📊 Agent Evaluator]]
+
+    class U,UI user;
+    class T,O1,O2,S orchestrator;
+    class A1,A2,A3,A4 agent;
+    class E eval;
 ```
 
 ### ReAct pipeline (`orchestrator/react_planner.py`)
