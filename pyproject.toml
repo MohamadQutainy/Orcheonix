@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "orcheonix"
+version = "0.1.0"
+description = "A multi-agent business intelligence platform powered by the OpenAI API."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Muhammad Q" }]
+dependencies = [
+  "streamlit==1.57.0",
+  "openai==2.44.0",
+  "python-dotenv==1.2.2",
+  "requests==2.34.2",
+  "pandas==3.0.3",
+  "pydantic==2.13.4",
+  "firecrawl-py==4.31.0",
+  "yfinance==1.5.1",
+  "ddgs==9.14.4",
+  "agno==2.6.22",
+  "openai-agents==0.17.7",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==9.1.1"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q -p no:cacheprovider"
