@@ -16,14 +16,14 @@ Default model: `gpt-5.4-nano` (configurable via `MODEL_NAME`).
 
 ## ✨ Key Features
 
-- **🤖 Multi-Agent Architecture** — Four specialized agents (Competitor, Finance, Research, Strategy) working in concert
-- **⚡ Parallel Execution** — Upstream agents run concurrently for maximum efficiency
-- **🎯 ReAct Orchestration** — Plan, execute, observe, and synthesize in a structured pipeline
-- **🔗 Real Tool Integrations** — Serper, Firecrawl, DuckDuckGo, YFinance, Agno, and OpenAI Agents SDK
-- **📊 Deterministic Evaluation** — Confidence, relevance, completeness, and hallucination risk scoring without extra LLM calls
-- **🔄 Resilient Pipelines** — Automatic retries, Serper/YFinance fallbacks, and manual fallback paths
-- **🚀 Production-Ready** — Streamlit dashboard, Docker support, GitHub Actions CI, and comprehensive testing
-- **📈 Structured Output** — Executive-ready reports with tables, metrics, and actionable insights
+- **🤖 Multi-Agent Architecture** - Four specialized agents (Competitor, Finance, Research, Strategy) working in concert
+- **⚡ Parallel Execution** - Upstream agents run concurrently for maximum efficiency
+- **🎯 ReAct Orchestration** - Plan, execute, observe, and synthesize in a structured pipeline
+- **🔗 Real Tool Integrations** - Serper, Firecrawl, DuckDuckGo, YFinance, Agno, and OpenAI Agents SDK
+- **📊 Deterministic Evaluation** - Confidence, relevance, completeness, and hallucination risk scoring without extra LLM calls
+- **🔄 Resilient Pipelines** - Automatic retries, Serper/YFinance fallbacks, and manual fallback paths
+- **🚀 Production-Ready** - Streamlit dashboard, Docker support, GitHub Actions CI, and comprehensive testing
+- **📈 Structured Output** - Executive-ready reports with tables, metrics, and actionable insights
 
 ---
 
@@ -51,13 +51,13 @@ Default model: `gpt-5.4-nano` (configurable via `MODEL_NAME`).
 
 Orcheonix is designed as a portfolio-grade multi-agent system. It demonstrates practical AI engineering patterns beyond a single chatbot prompt:
 
-- **ReAct orchestration** — plan, execute, observe, and synthesize in a structured pipeline.
-- **Parallel upstream execution** — competitor, finance, and research agents run concurrently via `asyncio.gather`.
-- **Real tool integrations** — Serper, Firecrawl, DuckDuckGo, YFinance, Agno, and the OpenAI Agents SDK.
-- **Shared infrastructure** — one OpenAI client, centralized configuration, structured JSONL logging.
-- **Deterministic evaluation** — confidence, relevance, completeness, and hallucination risk without extra LLM calls.
-- **Resilient pipelines** — retries, Serper/YFinance fallbacks, and strategy-agent manual fallback paths.
-- **Production touches** — Streamlit dashboard, Docker, GitHub Actions CI, and mock-based unit tests.
+- **ReAct orchestration** - plan, execute, observe, and synthesize in a structured pipeline.
+- **Parallel upstream execution** - competitor, finance, and research agents run concurrently via `asyncio.gather`.
+- **Real tool integrations** - Serper, Firecrawl, DuckDuckGo, YFinance, Agno, and the OpenAI Agents SDK.
+- **Shared infrastructure** - one OpenAI client, centralized configuration, structured JSONL logging.
+- **Deterministic evaluation** - confidence, relevance, completeness, and hallucination risk without extra LLM calls.
+- **Resilient pipelines** - retries, Serper/YFinance fallbacks, and strategy-agent manual fallback paths.
+- **Production touches** - Streamlit dashboard, Docker, GitHub Actions CI, and mock-based unit tests.
 
 **Main entry point:** `orchestrator/react_planner.py`
 
@@ -86,9 +86,9 @@ python -m streamlit run orchestrator/react_planner.py
 Open `http://localhost:8501` in your browser and enter a strategic query to get started.
 
 **Required API Keys:**
-- [OpenAI](https://platform.openai.com/) — For LLM operations
-- [Firecrawl](https://firecrawl.dev/) — For web extraction and deep research
-- [Serper](https://serper.dev/) — For Google search results
+- [OpenAI](https://platform.openai.com/) - For LLM operations
+- [Firecrawl](https://firecrawl.dev/) - For web extraction and deep research
+- [Serper](https://serper.dev/) - For Google search results
 
 ---
 
@@ -178,7 +178,7 @@ PlannerState
 
 ## Agents
 
-### A1 — Competitor Intelligence (`orcheonix_agents/competitor_agent.py`)
+### A1 - Competitor Intelligence (`orcheonix_agents/competitor_agent.py`)
 
 **Purpose:** Identify direct competitors and produce a structured positioning analysis.
 
@@ -203,7 +203,7 @@ The orchestrator calls this with `description=query` and `max_results=2`.
 
 ---
 
-### A2 — Market and Financial (`orcheonix_agents/finance_agent.py`)
+### A2 - Market and Financial (`orcheonix_agents/finance_agent.py`)
 
 **Purpose:** Resolve tickers, retrieve financial data, and summarize market context.
 
@@ -211,8 +211,8 @@ The orchestrator calls this with `description=query` and `max_results=2`.
 
 **Architecture:** Agno `Team` with two members:
 
-- **Web Agent** — DuckDuckGo search for market news and context.
-- **Finance Agent** — YFinance tools for ticker and financial data.
+- **Web Agent** - DuckDuckGo search for market news and context.
+- **Finance Agent** - YFinance tools for ticker and financial data.
 
 **Fallback:** If output lacks tables or numeric data, the agent extracts public tickers via LLM, validates with `yfinance`, and builds a fallback report from `fast_info`.
 
@@ -222,7 +222,7 @@ The orchestrator calls this with `description=query` and `max_results=2`.
 
 ---
 
-### A3 — Deep Research (`orcheonix_agents/research_agent.py`)
+### A3 - Deep Research (`orcheonix_agents/research_agent.py`)
 
 **Purpose:** Run a three-step research, elaboration, and critique pipeline.
 
@@ -238,13 +238,13 @@ The orchestrator calls this with `description=query` and `max_results=2`.
 
 **Framework:** OpenAI Agents SDK (`Agent`, `Runner`, `OpenAIChatCompletionsModel`, `function_tool`).
 
-**Design note:** No Streamlit imports at module level — safe to import from the orchestrator.
+**Design note:** No Streamlit imports at module level - safe to import from the orchestrator.
 
 **Output:** Final sanitized Markdown research report.
 
 ---
 
-### A4 — Strategy and Risk (`orcheonix_agents/strategy_agent.py`)
+### A4 - Strategy and Risk (`orcheonix_agents/strategy_agent.py`)
 
 **Purpose:** Produce a strategy blueprint using all upstream agent context.
 
@@ -286,11 +286,11 @@ Central configuration loaded from `.env` via `python-dotenv`.
 
 | Setting | Source | Default |
 | --- | --- | --- |
-| `OPENAI_API_KEY` | env | — |
-| `OPENAI_BASE_URL` | env | — |
+| `OPENAI_API_KEY` | env | - |
+| `OPENAI_BASE_URL` | env | - |
 | `MODEL_NAME` | env | `gpt-5.4-nano` |
-| `FIRECRAWL_API_KEY` | env | — |
-| `SERPER_API_KEY` | env | — |
+| `FIRECRAWL_API_KEY` | env | - |
+| `SERPER_API_KEY` | env | - |
 | `MIN_RESULT_LEN` | env | `200` |
 | `MAX_RETRIES` | env | `1` |
 | `NO_THINK_PREFIX` | `FAST_AGENT_INSTRUCTION` env or built-in | Concise, factual, tool-grounded instruction prefix |
@@ -299,7 +299,7 @@ Central configuration loaded from `.env` via `python-dotenv`.
 
 ### `core/llm_client.py`
 
-Provides a shared synchronous `OpenAI` client and an `AsyncOpenAI` client. All agents import from here — no per-agent raw client instantiation.
+Provides a shared synchronous `OpenAI` client and an `AsyncOpenAI` client. All agents import from here - no per-agent raw client instantiation.
 
 Supports optional `OPENAI_BASE_URL` for OpenAI-compatible endpoints.
 
@@ -354,7 +354,7 @@ Weighted average (25% each): confidence, relevance, completeness, and `(1 - hall
 | Data | pandas, pydantic, requests | 3.0.3, 2.13.4, 2.34.2 |
 | Config | python-dotenv | 1.2.2 |
 | Testing | pytest | 9.1.1 |
-| Deployment | Docker, docker-compose, GitHub Actions | — |
+| Deployment | Docker, docker-compose, GitHub Actions | - |
 
 ---
 
@@ -388,11 +388,11 @@ pip install -e ".[dev]"
 
 | Variable | Required | Default | Description |
 | --- | --- | --- | --- |
-| `OPENAI_API_KEY` | Yes | — | OpenAI API key for all LLM calls |
-| `FIRECRAWL_API_KEY` | Yes (full run) | — | Firecrawl for web extraction and deep research |
-| `SERPER_API_KEY` | Yes (full run) | — | Serper for Google search results |
+| `OPENAI_API_KEY` | Yes | - | OpenAI API key for all LLM calls |
+| `FIRECRAWL_API_KEY` | Yes (full run) | - | Firecrawl for web extraction and deep research |
+| `SERPER_API_KEY` | Yes (full run) | - | Serper for Google search results |
 | `MODEL_NAME` | No | `gpt-5.4-nano` | Model ID used by all agents |
-| `OPENAI_BASE_URL` | No | — | OpenAI-compatible endpoint override |
+| `OPENAI_BASE_URL` | No | - | OpenAI-compatible endpoint override |
 | `MAX_RETRIES` | No | `1` | Retries when agent output is too short or fails |
 | `MIN_RESULT_LEN` | No | `200` | Minimum acceptable agent output length in characters |
 | `FAST_AGENT_INSTRUCTION` | No | Built-in string | System instruction prefix for concise, tool-grounded agent behavior |
@@ -422,7 +422,7 @@ On Windows, use `python -m streamlit` if the `streamlit` command is not on PATH.
 | **Agent Details** | Raw output, timing, retry count, and confidence score |
 | **Reasoning Log** | Timestamped planner trace (THINK, ACTION, OBSERVE, SYNTHESIZE) |
 
-During execution, live status is shown in four columns — one per agent (A1 through A4).
+During execution, live status is shown in four columns - one per agent (A1 through A4).
 
 ### Synthesized report structure
 
@@ -468,10 +468,10 @@ Evaluate the market opportunity, competitors, financial signals, technical risks
 ```
 
 This query will trigger all four agents and produce a complete executive report covering:
-- **Competitor Analysis** — Direct competitors and positioning
-- **Market Intelligence** — Market size, trends, and financial signals
-- **Deep Research** — Technical feasibility and regulatory landscape
-- **Strategy Blueprint** — Implementation roadmap and risk mitigation
+- **Competitor Analysis** - Direct competitors and positioning
+- **Market Intelligence** - Market size, trends, and financial signals
+- **Deep Research** - Technical feasibility and regulatory landscape
+- **Strategy Blueprint** - Implementation roadmap and risk mitigation
 
 A representative output is available in [`examples/sample_output.md`](examples/sample_output.md). Live results vary by query, API availability, and model version.
 
@@ -488,10 +488,10 @@ orcheonix/
 │   ├── llm_client.py          # Shared OpenAI sync and async clients
 │   └── logger.py              # Console and JSONL structured logging
 ├── orcheonix_agents/
-│   ├── competitor_agent.py    # A1 — Serper + Firecrawl competitor analysis
-│   ├── finance_agent.py       # A2 — Agno Team market and financial intel
-│   ├── research_agent.py      # A3 — Three-step deep research pipeline
-│   └── strategy_agent.py      # A4 — Strategy blueprint and risk matrix
+│   ├── competitor_agent.py    # A1 - Serper + Firecrawl competitor analysis
+│   ├── finance_agent.py       # A2 - Agno Team market and financial intel
+│   ├── research_agent.py      # A3 - Three-step deep research pipeline
+│   └── strategy_agent.py      # A4 - Strategy blueprint and risk matrix
 ├── orchestrator/
 │   └── react_planner.py       # ReAct planner and main Streamlit application
 ├── evaluation/
@@ -535,7 +535,7 @@ python -m pytest
 
 - Triggers on push and pull request to `main`
 - Python 3.11 on `ubuntu-latest`
-- Dummy API keys injected — no live external API calls during CI
+- Dummy API keys injected - no live external API calls during CI
 
 ---
 
@@ -555,7 +555,7 @@ To add a new agent:
 
 - Never commit `.env`, `logs/`, API keys, or generated runtime files.
 - If a key was ever committed or shared, rotate it immediately from the provider dashboard.
-- `.env` is listed in `.gitignore` — verify before publishing the repository.
+- `.env` is listed in `.gitignore` - verify before publishing the repository.
 
 ---
 
