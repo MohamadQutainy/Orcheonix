@@ -12,8 +12,7 @@ Orcheonix accepts a single strategic query and produces an executive-ready intel
 
 Default model: `gpt-5.4-nano` (configurable via `MODEL_NAME`).
 ## Demo
-![Demo](https://github.com/user-attachments/assets/5d87851e-255a-4d82-acb3-d65bf7c3cf4f)
-
+<video src="https://github.com/user-attachments/assets/5d87851e-255a-4d82-acb3-d65bf7c3cf4f" width="100%" controls></video>
 
 ## ✨ Key Features
 
